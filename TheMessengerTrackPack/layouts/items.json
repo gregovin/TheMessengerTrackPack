@@ -144,15 +144,18 @@
                 "rows": [
                     [
                         "goal",
-                        "shuffled_power_seals"
+                        "shuffled_power_seals",
+                        "required_seals"
                     ],
                     [
-                        "required_seals",
-                        "logic"
-                    ],
-                    [
+                        "logic",
                         "auto_tab",
                         "shuffled_shards"
+                    ],
+                    [
+                        "num_portals",
+                        "portal_rando",
+                        "transition_rando"
                     ]
                 ]
             }
