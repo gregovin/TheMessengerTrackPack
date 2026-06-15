@@ -94,8 +94,35 @@ function onClear(slot_data)
             Tracker:FindObjectForCode("required_seals").AcquiredCount = tonumber(slot_data["required_seals"])
         end
     end
-
-
+    if slot_data["available_portals"] and not slot_data["available_portals"] == 0 then
+        Tracker:FindObjectForCode("num_portals").AcquiredCount = tonumber(slot_data["available_portals"])
+    else
+        Tracker:FindObjectForCode("num_portals").AcquiredCount = 6
+    end
+    if slot_data["shuffle_portals"] then
+        if slot_data["shuffle_portals"] == "shops" then
+            Tracker:FindObjectForCode("portal_rando").CurrentStage = 1
+        elseif slot_data["shuffle_portals"] == "checkpoints" then
+            Tracker:FindObjectForCode("portal_rando").CurrentStage = 2
+        elseif slot_data["shuffle_portals"] == "anywhere" then
+            Tracker:FindObjectForCode("portal_rando").CurrentStage = 3
+        else
+            Tracker:FindObjectForCode("portal_rando").CurrentStage = 0
+        end
+    else
+        Tracker:FindObjectForCode("portal_rando").CurrentStage = 0
+    end
+    if slot_data["shuffle_transitions"] then
+        if slot_data["shuffle_transitions"] == "coupled" then
+            Tracker:FindObjectForCode("transition_rando").CurrentStage = 1
+        elseif slot_data["shuffle_transitions"] == "decoupled" then
+            Tracker:FindObjectForCode("transition_rando").CurrentStage = 2
+        else
+            Tracker:FindObjectForCode("transition_rando").CurrentStage = 0
+        end
+    else
+        Tracker:FindObjectForCode("transition_rando").CurrentStage = 0
+    end
     if slot_data["shop"] then
         for k, v in ipairs(SHOP_DATA) do
             SHOP_PRICES[k] = {v[2], slot_data["shop"][v[1]]}
