@@ -99,5 +99,71 @@
         "codes": "shuffled_shards"
       }
     ]
+  },
+  {
+    "name": "Starting portals",
+    "type": "consumable",
+    "img": "images/portal.png",
+    "codes": "num_portals",
+    "overlay_background": "#000000",
+    "overlay_font_size": 12,
+    "max_quantity": 6,
+    "min_quantity": 3,
+    "initial_quantity": 6
+  },
+  {
+    "name": "Portal rando",
+    "type": "progressive",
+    "codes": "portal_rando",
+    "loop": true,
+    "allow_disabled": false,
+    "initial_stage_idx": 0,
+    "stages": [
+      {
+        "img": "images/locked_portals.png",
+        "codes": "locked_portals",
+        "name": "No portal rando"
+      },
+      {
+        "img": "images/portal_shops.png",
+        "codes": "portal_shops",
+        "name": "Shops"
+      },
+      {
+        "img": "images/portal_checkpoints.png",
+        "codes": "portal_checkpoints",
+        "name": "Checkpoints"
+      },
+      {
+        "img": "images/portal_anywhere.png",
+        "codes": "portal_anywhere",
+        "name": "Anywhere"
+      }
+    ]
+  },
+  {
+    "name": "Transition rando",
+    "type": "progressive",
+    "codes": "transition_rando",
+    "loop": true,
+    "allow_disabled": false,
+    "initial_stage_idx": 0,
+    "stages": [
+      {
+        "img": "images/transition_locked.png",
+        "codes": "transition_normal",
+        "name": "No transition rando"
+      },
+      {
+        "img": "images/transition_coupled.png",
+        "codes": "transition_coupled",
+        "name": "Coupled"
+      },
+      {
+        "img": "images/transition_decoupled.png",
+        "codes": "transition_decoupled",
+        "name": "Decoupled"
+      }
+    ]
   }
 ]
