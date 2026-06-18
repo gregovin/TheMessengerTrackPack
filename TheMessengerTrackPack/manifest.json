@@ -11,6 +11,12 @@
         "ap"
       ]
     },
+    "var_transition": {
+      "display_name": "Full Entrance Randomizer Tracker",
+      "flags": [
+        "ap"
+      ]
+    },
     "var_itemsonly": {
       "display_name": "Items Only",
       "flags": [

@@ -12,6 +12,7 @@ GLOBAL_ITEMS = {}
 SHOP_PRICES = {}
 FIGURE_PRICES = {}
 ADJUSTED_PRICES = {}
+Transition = false
 
 function onClear(slot_data)
     if AUTOTRACKER_ENABLE_DEBUG_LOGGING_AP then
@@ -20,6 +21,7 @@ function onClear(slot_data)
     SLOT_DATA = slot_data
     CUR_INDEX = -1
     SHARDS = 0
+    Transition = not not ((Tracker.ActiveVariantUID):find("transition"))
     -- reset locations
     for _, v in pairs(LOCATIONS_MAPPING) do
         if v[1] then
@@ -99,29 +101,31 @@ function onClear(slot_data)
     else
         Tracker:FindObjectForCode("num_portals").AcquiredCount = 6
     end
-    if slot_data["shuffle_portals"] then
-        if slot_data["shuffle_portals"] == "shops" then
-            Tracker:FindObjectForCode("portal_rando").CurrentStage = 1
-        elseif slot_data["shuffle_portals"] == "checkpoints" then
-            Tracker:FindObjectForCode("portal_rando").CurrentStage = 2
-        elseif slot_data["shuffle_portals"] == "anywhere" then
-            Tracker:FindObjectForCode("portal_rando").CurrentStage = 3
+    if Transition then
+        if slot_data["shuffle_portals"] then
+            if slot_data["shuffle_portals"] == "shops" then
+                Tracker:FindObjectForCode("portal_rando").CurrentStage = 1
+            elseif slot_data["shuffle_portals"] == "checkpoints" then
+                Tracker:FindObjectForCode("portal_rando").CurrentStage = 2
+            elseif slot_data["shuffle_portals"] == "anywhere" then
+                Tracker:FindObjectForCode("portal_rando").CurrentStage = 3
+            else
+                Tracker:FindObjectForCode("portal_rando").CurrentStage = 0
+            end
         else
             Tracker:FindObjectForCode("portal_rando").CurrentStage = 0
         end
-    else
-        Tracker:FindObjectForCode("portal_rando").CurrentStage = 0
-    end
-    if slot_data["shuffle_transitions"] then
-        if slot_data["shuffle_transitions"] == "coupled" then
-            Tracker:FindObjectForCode("transition_rando").CurrentStage = 1
-        elseif slot_data["shuffle_transitions"] == "decoupled" then
-            Tracker:FindObjectForCode("transition_rando").CurrentStage = 2
+        if slot_data["shuffle_transitions"] then
+            if slot_data["shuffle_transitions"] == "coupled" then
+                Tracker:FindObjectForCode("transition_rando").CurrentStage = 1
+            elseif slot_data["shuffle_transitions"] == "decoupled" then
+                Tracker:FindObjectForCode("transition_rando").CurrentStage = 2
+            else
+                Tracker:FindObjectForCode("transition_rando").CurrentStage = 0
+            end
         else
             Tracker:FindObjectForCode("transition_rando").CurrentStage = 0
         end
-    else
-        Tracker:FindObjectForCode("transition_rando").CurrentStage = 0
     end
     if slot_data["shop"] then
         for k, v in ipairs(SHOP_DATA) do

@@ -144,6 +144,32 @@
                 "rows": [
                     [
                         "goal",
+                        "shuffled_power_seals"
+                    ],
+                    [
+                        "required_seals",
+                        "logic"
+                    ],
+                    [
+                        "auto_tab",
+                        "shuffled_shards"
+                    ]
+                ]
+            }
+        ]
+    },
+    "tsettings": {
+        "type": "dock",
+        "dock": "left",
+        "h_alignment": "center",
+        "v_alignment": "top",
+        "content": [
+            {
+                "type": "itemgrid",
+                "item_margin": "10,10",
+                "rows": [
+                    [
+                        "goal",
                         "shuffled_power_seals",
                         "required_seals"
                     ],
