@@ -29,6 +29,13 @@ end
 Tracker:AddLayouts("layouts/items.json")
 Tracker:AddLayouts("layouts/tracker.json")
 Tracker:AddLayouts("layouts/broadcast.json")
-
+if variant:find("transition") then
+    ScriptHost:LoadScript("scripts/custom_items/class.lua")
+    ScriptHost:LoadScript("scripts/custom_items/genericStorageWrapper.lua")
+    ScriptHost:LoadScript("scripts/custom_items/portals.lua")
+    ScriptHost:LoadScript("scripts/custom_items/transitions.lua")
+    ScriptHost:LoadScript("scripts/default_transitions.lua")
+end
 -- AutoTracking for Poptracker
 ScriptHost:LoadScript("scripts/autotracking/archipelago.lua")
+

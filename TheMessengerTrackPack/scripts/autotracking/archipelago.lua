@@ -126,6 +126,29 @@ function onClear(slot_data)
         else
             Tracker:FindObjectForCode("transition_rando").CurrentStage = 0
         end
+        Portals:Init("Portal Tracker","portals")
+        if Tracker:FindObjectForCode("portal_rando").CurrentStage == 0 then
+            Portals:SetDestination("1","Autumn Hills - Portal")
+            Portals:SetDestination("2","Howling Grotto - Portal")
+            Portals:SetDestination("3","Searing Crags - Portal")
+            Portals:SetDestination("4","Glacial Peak - Portal")
+            Portals:SetDestination("5","Riviere Turquoise - Portal")
+            Portals:SetDestination("6","Sunken Shrine - Portal")
+        end
+        Portals:OpenPortal("1")
+        Portals:OpenPortal("2")
+        Portals:OpenPortal("3")
+        if Tracker:FindObjectForCode("num_portals").AcquiredCount == 6 then
+            Portals:OpenPortal("4")
+            Portals:OpenPortal("5")
+            Portals:OpenPortal("6")
+        end
+        Transitions:Init("Transition Tracker","transitions")
+        if Tracker:FindObjectForCode("transition_rando").CurrentStage == 0 then
+            for k,v in pairs(DefualtTransitions) do
+                Transitions:SetTransition(k,v)
+            end
+        end
     end
     if slot_data["shop"] then
         for k, v in ipairs(SHOP_DATA) do
