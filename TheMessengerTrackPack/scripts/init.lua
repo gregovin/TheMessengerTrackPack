@@ -35,6 +35,8 @@ if variant:find("transition") then
     ScriptHost:LoadScript("scripts/custom_items/portals.lua")
     ScriptHost:LoadScript("scripts/custom_items/transitions.lua")
     ScriptHost:LoadScript("scripts/default_transitions.lua")
+    Portals:Init("Portal tracker","portals")
+    Transitions:Init("transition tracker","transitions")
 end
 -- AutoTracking for Poptracker
 ScriptHost:LoadScript("scripts/autotracking/archipelago.lua")
